@@ -90,7 +90,7 @@ export const upsertListing = createServerFn({ method: "POST" })
 
     if (data.id) {
       const { id, ...rest } = data;
-      const { error } = await supabaseAdmin.from("listings").update(rest).eq("id", id);
+      const { error } = await (supabaseAdmin as any).from("listings").update(rest).eq("id", id);
       if (error) throw new Error(error.message);
       return { ok: true, id };
     } else {
@@ -117,7 +117,7 @@ export const deleteListing = createServerFn({ method: "POST" })
       .eq("role", "admin")
       .maybeSingle();
     if (!role) throw new Error("Forbidden");
-    const { error } = await supabaseAdmin.from("listings").delete().eq("id", data.id);
+    const { error } = await (supabaseAdmin as any).from("listings").delete().eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
