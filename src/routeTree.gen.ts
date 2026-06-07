@@ -9,38 +9,216 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ArticlesRouteImport } from './routes/articles'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ListingsIndexRouteImport } from './routes/listings.index'
+import { Route as ListingsIdRouteImport } from './routes/listings.$id'
+import { Route as AuthenticatedAdminListingsRouteImport } from './routes/_authenticated/admin.listings'
 
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesRoute = ArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ListingsIndexRoute = ListingsIndexRouteImport.update({
+  id: '/listings/',
+  path: '/listings/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListingsIdRoute = ListingsIdRouteImport.update({
+  id: '/listings/$id',
+  path: '/listings/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminListingsRoute =
+  AuthenticatedAdminListingsRouteImport.update({
+    id: '/admin/listings',
+    path: '/admin/listings',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/articles': typeof ArticlesRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/listings/$id': typeof ListingsIdRoute
+  '/listings/': typeof ListingsIndexRoute
+  '/admin/listings': typeof AuthenticatedAdminListingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/articles': typeof ArticlesRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/listings/$id': typeof ListingsIdRoute
+  '/listings': typeof ListingsIndexRoute
+  '/admin/listings': typeof AuthenticatedAdminListingsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/about': typeof AboutRoute
+  '/articles': typeof ArticlesRoute
+  '/auth': typeof AuthRoute
+  '/contact': typeof ContactRoute
+  '/services': typeof ServicesRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/listings/$id': typeof ListingsIdRoute
+  '/listings/': typeof ListingsIndexRoute
+  '/_authenticated/admin/listings': typeof AuthenticatedAdminListingsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/auth'
+    | '/contact'
+    | '/services'
+    | '/testimonials'
+    | '/listings/$id'
+    | '/listings/'
+    | '/admin/listings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/articles'
+    | '/auth'
+    | '/contact'
+    | '/services'
+    | '/testimonials'
+    | '/listings/$id'
+    | '/listings'
+    | '/admin/listings'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/about'
+    | '/articles'
+    | '/auth'
+    | '/contact'
+    | '/services'
+    | '/testimonials'
+    | '/listings/$id'
+    | '/listings/'
+    | '/_authenticated/admin/listings'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AboutRoute: typeof AboutRoute
+  ArticlesRoute: typeof ArticlesRoute
+  AuthRoute: typeof AuthRoute
+  ContactRoute: typeof ContactRoute
+  ServicesRoute: typeof ServicesRoute
+  TestimonialsRoute: typeof TestimonialsRoute
+  ListingsIdRoute: typeof ListingsIdRoute
+  ListingsIndexRoute: typeof ListingsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles': {
+      id: '/articles'
+      path: '/articles'
+      fullPath: '/articles'
+      preLoaderRoute: typeof ArticlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +226,52 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/listings/': {
+      id: '/listings/'
+      path: '/listings'
+      fullPath: '/listings/'
+      preLoaderRoute: typeof ListingsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listings/$id': {
+      id: '/listings/$id'
+      path: '/listings/$id'
+      fullPath: '/listings/$id'
+      preLoaderRoute: typeof ListingsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin/listings': {
+      id: '/_authenticated/admin/listings'
+      path: '/admin/listings'
+      fullPath: '/admin/listings'
+      preLoaderRoute: typeof AuthenticatedAdminListingsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminListingsRoute: typeof AuthenticatedAdminListingsRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminListingsRoute: AuthenticatedAdminListingsRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AboutRoute: AboutRoute,
+  ArticlesRoute: ArticlesRoute,
+  AuthRoute: AuthRoute,
+  ContactRoute: ContactRoute,
+  ServicesRoute: ServicesRoute,
+  TestimonialsRoute: TestimonialsRoute,
+  ListingsIdRoute: ListingsIdRoute,
+  ListingsIndexRoute: ListingsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
