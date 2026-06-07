@@ -21,19 +21,21 @@ export type Listing = {
   created_at: string;
 };
 
-export const listAllListings = createServerFn({ method: "GET" }).handler(async () => {
+async function sb() {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  const { data, error } = await (supabaseAdmin as any)
-    .from("listings")
-    .select("*")
-    .order("created_at", { ascending: false });
+  return supabaseAdmin as any;
+}
+
+export const listAllListings = createServerFn({ method: "GET" }).handler(async () => {
+  const db = await sb();
+  const { data, error } = await db.from("listings").select("*").order("created_at", { ascending: false });
   if (error) throw new Error(error.message);
   return (data ?? []) as Listing[];
 });
 
 export const listFeaturedListings = createServerFn({ method: "GET" }).handler(async () => {
-  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  const { data, error } = await supabaseAdmin
+  const db = await sb();
+  const { data, error } = await db
     .from("listings")
     .select("*")
     .eq("featured", true)
@@ -46,12 +48,8 @@ export const listFeaturedListings = createServerFn({ method: "GET" }).handler(as
 export const getListing = createServerFn({ method: "GET" })
   .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: row, error } = await supabaseAdmin
-      .from("listings")
-      .select("*")
-      .eq("id", data.id)
-      .maybeSingle();
+    const db = await sb();
+    const { data: row, error } = await db.from("listings").select("*").eq("id", data.id).maybeSingle();
     if (error) throw new Error(error.message);
     return (row ?? null) as Listing | null;
   });
@@ -74,50 +72,36 @@ const upsertSchema = z.object({
   featured: z.boolean().default(false),
 });
 
+async function assertAdmin(userId: string) {
+  const db = await sb();
+  const { data } = await db.from("user_roles").select("role").eq("user_id", userId).eq("role", "admin").maybeSingle();
+  if (!data) throw new Error("Forbidden");
+  return db;
+}
+
 export const upsertListing = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) => upsertSchema.parse(d))
   .handler(async ({ data, context }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    // verify admin
-    const { data: role } = await supabaseAdmin
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", context.userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (!role) throw new Error("Forbidden");
-
+    const db = await assertAdmin(context.userId);
     if (data.id) {
       const { id, ...rest } = data;
-      const { error } = await (supabaseAdmin as any).from("listings").update(rest).eq("id", id);
+      const { error } = await db.from("listings").update(rest).eq("id", id);
       if (error) throw new Error(error.message);
       return { ok: true, id };
-    } else {
-      const { id: _ignore, ...rest } = data;
-      const { data: row, error } = await supabaseAdmin
-        .from("listings")
-        .insert(rest)
-        .select("id")
-        .single();
-      if (error) throw new Error(error.message);
-      return { ok: true, id: row.id };
     }
+    const { id: _ignore, ...rest } = data;
+    const { data: row, error } = await db.from("listings").insert(rest).select("id").single();
+    if (error) throw new Error(error.message);
+    return { ok: true, id: row.id as string };
   });
 
 export const deleteListing = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data, context }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: role } = await supabaseAdmin
-      .from("user_roles")
-      .select("role")
-      .eq("user_id", context.userId)
-      .eq("role", "admin")
-      .maybeSingle();
-    if (!role) throw new Error("Forbidden");
-    const { error } = await (supabaseAdmin as any).from("listings").delete().eq("id", data.id);
+    const db = await assertAdmin(context.userId);
+    const { error } = await db.from("listings").delete().eq("id", data.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
