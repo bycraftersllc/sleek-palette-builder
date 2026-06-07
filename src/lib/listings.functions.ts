@@ -23,7 +23,7 @@ export type Listing = {
 
 export const listAllListings = createServerFn({ method: "GET" }).handler(async () => {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  const { data, error } = await supabaseAdmin
+  const { data, error } = await (supabaseAdmin as any)
     .from("listings")
     .select("*")
     .order("created_at", { ascending: false });
