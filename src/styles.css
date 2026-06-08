@@ -122,7 +122,7 @@
   background-size: 22px 22px;
 }
 
-/* Grayscale photo treatment */
+/* Photos render in full color */
 @utility photo-mono {
-  filter: grayscale(1) contrast(1.05);
+  filter: saturate(1.05) contrast(1.02);
 }
