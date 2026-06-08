@@ -34,15 +34,19 @@ export const listAllListings = createServerFn({ method: "GET" }).handler(async (
 });
 
 export const listFeaturedListings = createServerFn({ method: "GET" }).handler(async () => {
-  const db = await sb();
-  const { data, error } = await db
-    .from("listings")
-    .select("*")
-    .eq("featured", true)
-    .order("created_at", { ascending: false })
-    .limit(3);
-  if (error) throw new Error(error.message);
-  return (data ?? []) as Listing[];
+  try {
+    const db = await sb();
+    const { data, error } = await db
+      .from("listings")
+      .select("*")
+      .eq("featured", true)
+      .order("created_at", { ascending: false })
+      .limit(3);
+    if (error) return [] as Listing[];
+    return (data ?? []) as Listing[];
+  } catch {
+    return [] as Listing[];
+  }
 });
 
 export const getListing = createServerFn({ method: "GET" })
