@@ -61,9 +61,9 @@ function Page() {
               <li>3. We make a plan that fits your timeline. No pressure, ever.</li>
             </ul>
             <div className="mt-10 space-y-3 text-sm">
-              <p className="inline-flex items-center gap-3"><Phone className="h-4 w-4 text-muted-foreground" /> (512) 555-0142</p><br/>
-              <p className="inline-flex items-center gap-3"><Mail className="h-4 w-4 text-muted-foreground" /> hello@morganreed.co</p><br/>
-              <p className="inline-flex items-center gap-3"><MapPin className="h-4 w-4 text-muted-foreground" /> 120 Market Street, Suite 410, Austin, TX</p>
+              <p className="flex items-center gap-3"><Phone className="h-4 w-4 text-muted-foreground" /><span>(512) 555-0142</span></p>
+              <p className="flex items-center gap-3"><Mail className="h-4 w-4 text-muted-foreground" /><span>hello@morganreed.co</span></p>
+              <p className="flex items-center gap-3"><MapPin className="h-4 w-4 text-muted-foreground" /><span>120 Market Street, Suite 410, Austin, TX</span></p>
             </div>
           </div>
 
