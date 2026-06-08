@@ -23,7 +23,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 md:px-8">
         <Link to="/" className="font-display text-lg tracking-tight">
-          Morgan Reed<span className="text-muted-foreground"> · Realty + Lending</span>
+          Prince Agrawal<span className="text-muted-foreground"> · Realty + Lending</span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7">
@@ -88,7 +88,7 @@ export function SiteFooter() {
     <footer className="border-t border-border bg-muted">
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-12 grid gap-8 md:grid-cols-3">
         <div>
-          <p className="font-display text-xl">Morgan Reed</p>
+          <p className="font-display text-xl">Prince Agrawal</p>
           <p className="mt-2 text-sm text-muted-foreground max-w-xs">
             Licensed Realtor & Loan Officer. Helping you buy, sell, and finance — with one trusted partner from start to close.
           </p>
@@ -106,7 +106,7 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-5 md:px-8 py-5 flex flex-col md:flex-row justify-between gap-2 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Morgan Reed. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Prince Agrawal. All rights reserved.</p>
           <p>Equal Housing Opportunity · NMLS #1234567</p>
         </div>
       </div>

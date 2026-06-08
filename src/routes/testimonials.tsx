@@ -28,9 +28,9 @@ const ITEMS = [
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Testimonials — Morgan Reed" },
+      { title: "Testimonials — Prince Agrawal" },
       { name: "description", content: "Real stories from buyers, sellers, and refinance clients across Central Texas." },
-      { property: "og:title", content: "Testimonials — Morgan Reed" },
+      { property: "og:title", content: "Testimonials — Prince Agrawal" },
       { property: "og:description", content: "Real stories from buyers, sellers, and refinance clients." },
     ],
   }),

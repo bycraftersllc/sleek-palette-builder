@@ -13,9 +13,9 @@ const featuredOpts = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Morgan Reed — Realtor & Loan Officer in Austin, TX" },
+      { title: "Prince Agrawal — Realtor & Loan Officer in Austin, TX" },
       { name: "description", content: "Buy, sell, and finance with one trusted partner. Curated listings and stress-free lending in Austin and Central Texas." },
-      { property: "og:title", content: "Morgan Reed — Realtor & Loan Officer" },
+      { property: "og:title", content: "Prince Agrawal — Realtor & Loan Officer" },
       { property: "og:description", content: "Curated listings and stress-free lending in Central Texas." },
     ],
   }),

@@ -11,9 +11,9 @@ const POSTS = [
 export const Route = createFileRoute("/articles")({
   head: () => ({
     meta: [
-      { title: "Articles — Morgan Reed" },
+      { title: "Articles — Prince Agrawal" },
       { name: "description", content: "Market trends, how-tos, neighborhood spotlights, and the inside view of buying and selling in Central Texas." },
-      { property: "og:title", content: "Articles — Morgan Reed" },
+      { property: "og:title", content: "Articles — Prince Agrawal" },
       { property: "og:description", content: "Market trends, how-tos, and neighborhood spotlights." },
     ],
   }),
