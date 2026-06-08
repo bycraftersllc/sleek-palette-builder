@@ -4,9 +4,9 @@ import { SiteLayout, Section } from "@/components/site-shell";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Morgan Reed" },
+      { title: "Services — Prince Agrawal" },
       { name: "description", content: "Buying, selling, and financing — handled by one trusted partner. Stress-free real estate and lending in Central Texas." },
-      { property: "og:title", content: "Services — Morgan Reed" },
+      { property: "og:title", content: "Services — Prince Agrawal" },
       { property: "og:description", content: "Buying, selling, and financing — handled by one trusted partner." },
     ],
   }),

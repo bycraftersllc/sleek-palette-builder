@@ -74,9 +74,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Morgan Reed — Realtor & Loan Officer" },
+      { title: "Prince Agrawal — Realtor & Loan Officer" },
       { name: "description", content: "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence." },
-      { property: "og:title", content: "Morgan Reed — Realtor & Loan Officer" },
+      { property: "og:title", content: "Prince Agrawal — Realtor & Loan Officer" },
       { property: "og:description", content: "Curated homes and stress-free financing." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

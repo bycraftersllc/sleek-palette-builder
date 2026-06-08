@@ -17,9 +17,9 @@ export const Route = createFileRoute("/listings/$id")({
   },
   head: ({ loaderData }) => ({
     meta: loaderData ? [
-      { title: `${loaderData.title} — Morgan Reed` },
+      { title: `${loaderData.title} — Prince Agrawal` },
       { name: "description", content: `${loaderData.address}, ${loaderData.city}, ${loaderData.state}. ${loaderData.beds} bd · ${loaderData.baths} ba · ${loaderData.sqft.toLocaleString()} sqft.` },
-      { property: "og:title", content: `${loaderData.title} — Morgan Reed` },
+      { property: "og:title", content: `${loaderData.title} — Prince Agrawal` },
       { property: "og:description", content: `${loaderData.address}, ${loaderData.city}, ${loaderData.state}.` },
       ...(loaderData.cover_image_url ? [
         { property: "og:image", content: loaderData.cover_image_url },

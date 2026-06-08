@@ -14,9 +14,9 @@ const opts = queryOptions({
 export const Route = createFileRoute("/listings/")({
   head: () => ({
     meta: [
-      { title: "Featured Listings — Morgan Reed" },
+      { title: "Featured Listings — Prince Agrawal" },
       { name: "description", content: "Currently active homes for sale, pending, and recently sold in Austin and Central Texas." },
-      { property: "og:title", content: "Featured Listings — Morgan Reed" },
+      { property: "og:title", content: "Featured Listings — Prince Agrawal" },
       { property: "og:description", content: "Currently active homes for sale, pending, and recently sold." },
     ],
   }),

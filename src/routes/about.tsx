@@ -4,9 +4,9 @@ import { SiteLayout, Section } from "@/components/site-shell";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Morgan Reed" },
+      { title: "About — Prince Agrawal" },
       { name: "description", content: "Engineer, entrepreneur, and social-impact advocate dedicated to creating innovative solutions that empower communities." },
-      { property: "og:title", content: "About — Morgan Reed" },
+      { property: "og:title", content: "About — Prince Agrawal" },
       { property: "og:description", content: "Engineer, entrepreneur, and social-impact advocate." },
     ],
   }),
