@@ -62,7 +62,7 @@ function Page() {
             </ul>
             <div className="mt-10 space-y-3 text-sm">
               <p className="flex items-center gap-3"><Phone className="h-4 w-4 text-muted-foreground" /><span>(512) 555-0142</span></p>
-              <p className="flex items-center gap-3"><Mail className="h-4 w-4 text-muted-foreground" /><span>hello@morganreed.co</span></p>
+              <p className="flex items-center gap-3"><Mail className="h-4 w-4 text-muted-foreground" /><span>hello@princeagrawal.com</span></p>
               <p className="flex items-center gap-3"><MapPin className="h-4 w-4 text-muted-foreground" /><span>120 Market Street, Suite 410, Austin, TX</span></p>
             </div>
           </div>

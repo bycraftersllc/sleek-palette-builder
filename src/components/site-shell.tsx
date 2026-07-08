@@ -101,7 +101,7 @@ export function SiteFooter() {
         <div className="text-sm">
           <p className="eyebrow mb-3">Reach out</p>
           <p className="text-foreground/80">(512) 555-0142</p>
-          <p className="text-foreground/80">hello@morganreed.co</p>
+          <p className="text-foreground/80">hello@princeagrawal.com</p>
         </div>
       </div>
       <div className="border-t border-border">

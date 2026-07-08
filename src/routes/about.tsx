@@ -64,7 +64,7 @@ function Page() {
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div>
             <p className="eyebrow">About Me.</p>
-            <h1 className="display-1 mt-4">Hi — I'm Morgan.</h1>
+            <h1 className="display-1 mt-4">Hi — I'm Prince.</h1>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
               Engineer, entrepreneur, and social-impact advocate dedicated to creating
               innovative solutions that empower communities and help people achieve their

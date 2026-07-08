@@ -11,17 +11,17 @@ const ITEMS = [
   {
     name: "Avery & Daniel",
     role: "First-time buyers · East Austin",
-    body: "We'd been outbid four times before we met Morgan. She walked us through a creative escalation clause, prepped the pre-approval letter the same afternoon, and we had keys eleven days later. The fact that she handled BOTH the offer and the loan meant we never had to translate between two people. Communication was unreal — two emails a day, every day. We'd send anyone we love her way.",
+    body: "We'd been outbid four times before we met Prince. He walked us through a creative escalation clause, prepped the pre-approval letter the same afternoon, and we had keys eleven days later. The fact that he handled BOTH the offer and the loan meant we never had to translate between two people. Communication was unreal — two emails a day, every day. We'd send anyone we love his way.",
   },
   {
     name: "The Ortiz Family",
     role: "Move-up sellers · Cedar Park",
-    body: "Selling a home with three kids under seven sounded impossible. Morgan built us a staging plan we could actually live with, brought in a photographer who made our place look like an Airbnb cover shoot, and we had four offers by the end of the first weekend. We closed $32k over asking and she even helped us finance the new place. Genuinely felt like we hired a friend, not a vendor.",
+    body: "Selling a home with three kids under seven sounded impossible. Prince built us a staging plan we could actually live with, brought in a photographer who made our place look like an Airbnb cover shoot, and we had four offers by the end of the first weekend. We closed $32k over asking and he even helped us finance the new place. Genuinely felt like we hired a friend, not a vendor.",
   },
   {
     name: "Priya Shah",
     role: "Refinance · South Lamar",
-    body: "I called Morgan after my last lender ghosted me three weeks into a refi. She had a new pre-approval in my inbox by Tuesday and we closed in 18 days. She broke down every line of the loan estimate so I actually understood what I was paying for, and pointed out two fees I could push back on. I will not work with anyone else for the rest of my life.",
+    body: "I called Prince after my last lender ghosted me three weeks into a refi. He had a new pre-approval in my inbox by Tuesday and we closed in 18 days. He broke down every line of the loan estimate so I actually understood what I was paying for, and pointed out two fees I could push back on. I will not work with anyone else for the rest of my life.",
   },
 ] as const;
 

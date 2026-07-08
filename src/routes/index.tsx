@@ -164,7 +164,7 @@ function TestimonialStrip() {
           {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
         </div>
         <p className="display-2 mt-6">
-          “Morgan handled the loan AND the offer. Two emails a day, never an unanswered question. We closed in 23 days.”
+          “Prince handled the loan AND the offer. Two emails a day, never an unanswered question. We closed in 23 days.”
         </p>
         <p className="mt-6 eyebrow">Avery & Daniel · First-time buyers</p>
         <Link to="/testimonials" className="mt-8 inline-block text-sm underline underline-offset-4 text-muted-foreground hover:text-foreground">
