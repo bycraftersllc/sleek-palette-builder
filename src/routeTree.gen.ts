@@ -9,41 +9,25 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TestimonialsRouteImport } from './routes/testimonials'
-import { Route as ServicesRouteImport } from './routes/services'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as ArticlesRouteImport } from './routes/articles'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as ListingsIndexRouteImport } from './routes/listings.index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as LoanofficerRouteImport } from './routes/loanofficer'
+import { Route as NewartoflivingRouteImport } from './routes/newartofliving'
+import { Route as RealtorRouteImport } from './routes/realtor'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 import { Route as AuthenticatedAdminListingsRouteImport } from './routes/_authenticated/admin.listings'
 
-const TestimonialsRoute = TestimonialsRouteImport.update({
-  id: '/testimonials',
-  path: '/testimonials',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ServicesRoute = ServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArticlesRoute = ArticlesRouteImport.update({
-  id: '/articles',
-  path: '/articles',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -51,18 +35,34 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ListingsIndexRoute = ListingsIndexRouteImport.update({
-  id: '/listings/',
-  path: '/listings/',
+const LoanofficerRoute = LoanofficerRouteImport.update({
+  id: '/loanofficer',
+  path: '/loanofficer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewartoflivingRoute = NewartoflivingRouteImport.update({
+  id: '/newartofliving',
+  path: '/newartofliving',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RealtorRoute = RealtorRouteImport.update({
+  id: '/realtor',
+  path: '/realtor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ListingsIdRoute = ListingsIdRouteImport.update({
@@ -80,25 +80,25 @@ const AuthenticatedAdminListingsRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/loanofficer': typeof LoanofficerRoute
+  '/newartofliving': typeof NewartoflivingRoute
+  '/realtor': typeof RealtorRoute
   '/testimonials': typeof TestimonialsRoute
   '/listings/$id': typeof ListingsIdRoute
-  '/listings/': typeof ListingsIndexRoute
   '/admin/listings': typeof AuthenticatedAdminListingsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/loanofficer': typeof LoanofficerRoute
+  '/newartofliving': typeof NewartoflivingRoute
+  '/realtor': typeof RealtorRoute
   '/testimonials': typeof TestimonialsRoute
   '/listings/$id': typeof ListingsIdRoute
-  '/listings': typeof ListingsIndexRoute
   '/admin/listings': typeof AuthenticatedAdminListingsRoute
 }
 export interface FileRoutesById {
@@ -106,13 +106,13 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/about': typeof AboutRoute
-  '/articles': typeof ArticlesRoute
   '/auth': typeof AuthRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/loanofficer': typeof LoanofficerRoute
+  '/newartofliving': typeof NewartoflivingRoute
+  '/realtor': typeof RealtorRoute
   '/testimonials': typeof TestimonialsRoute
   '/listings/$id': typeof ListingsIdRoute
-  '/listings/': typeof ListingsIndexRoute
   '/_authenticated/admin/listings': typeof AuthenticatedAdminListingsRoute
 }
 export interface FileRouteTypes {
@@ -120,38 +120,38 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
-    | '/articles'
     | '/auth'
     | '/contact'
-    | '/services'
+    | '/loanofficer'
+    | '/newartofliving'
+    | '/realtor'
     | '/testimonials'
     | '/listings/$id'
-    | '/listings/'
     | '/admin/listings'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/articles'
     | '/auth'
     | '/contact'
-    | '/services'
+    | '/loanofficer'
+    | '/newartofliving'
+    | '/realtor'
     | '/testimonials'
     | '/listings/$id'
-    | '/listings'
     | '/admin/listings'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/about'
-    | '/articles'
     | '/auth'
     | '/contact'
-    | '/services'
+    | '/loanofficer'
+    | '/newartofliving'
+    | '/realtor'
     | '/testimonials'
     | '/listings/$id'
-    | '/listings/'
     | '/_authenticated/admin/listings'
   fileRoutesById: FileRoutesById
 }
@@ -159,57 +159,22 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AboutRoute: typeof AboutRoute
-  ArticlesRoute: typeof ArticlesRoute
   AuthRoute: typeof AuthRoute
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  LoanofficerRoute: typeof LoanofficerRoute
+  NewartoflivingRoute: typeof NewartoflivingRoute
+  RealtorRoute: typeof RealtorRoute
   TestimonialsRoute: typeof TestimonialsRoute
   ListingsIdRoute: typeof ListingsIdRoute
-  ListingsIndexRoute: typeof ListingsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/testimonials': {
-      id: '/testimonials'
-      path: '/testimonials'
-      fullPath: '/testimonials'
-      preLoaderRoute: typeof TestimonialsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services': {
-      id: '/services'
-      path: '/services'
-      fullPath: '/services'
-      preLoaderRoute: typeof ServicesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/articles': {
-      id: '/articles'
-      path: '/articles'
-      fullPath: '/articles'
-      preLoaderRoute: typeof ArticlesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -219,18 +184,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/listings/': {
-      id: '/listings/'
-      path: '/listings'
-      fullPath: '/listings/'
-      preLoaderRoute: typeof ListingsIndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loanofficer': {
+      id: '/loanofficer'
+      path: '/loanofficer'
+      fullPath: '/loanofficer'
+      preLoaderRoute: typeof LoanofficerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/newartofliving': {
+      id: '/newartofliving'
+      path: '/newartofliving'
+      fullPath: '/newartofliving'
+      preLoaderRoute: typeof NewartoflivingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/realtor': {
+      id: '/realtor'
+      path: '/realtor'
+      fullPath: '/realtor'
+      preLoaderRoute: typeof RealtorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/listings/$id': {
@@ -265,13 +265,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AboutRoute: AboutRoute,
-  ArticlesRoute: ArticlesRoute,
   AuthRoute: AuthRoute,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  LoanofficerRoute: LoanofficerRoute,
+  NewartoflivingRoute: NewartoflivingRoute,
+  RealtorRoute: RealtorRoute,
   TestimonialsRoute: TestimonialsRoute,
   ListingsIdRoute: ListingsIdRoute,
-  ListingsIndexRoute: ListingsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { SiteLayout, Section } from "@/components/site-shell";
-import { listFeaturedListings, type Listing } from "@/lib/listings.functions";
-import { ArrowRight, Home, KeyRound, Banknote, Star } from "lucide-react";
-import { ListingCard } from "@/components/listing-card";
+import { listFeaturedListings } from "@/lib/listings.functions";
+import { Globe, Award, Sparkles, Send } from "lucide-react";
 
 const featuredOpts = queryOptions({
   queryKey: ["featured-listings"],
@@ -13,180 +12,284 @@ const featuredOpts = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Prince Agrawal — Realtor & Loan Officer in Austin, TX" },
-      { name: "description", content: "Buy, sell, and finance with one trusted partner. Curated listings and stress-free lending in Austin and Central Texas." },
-      { property: "og:title", content: "Prince Agrawal — Realtor & Loan Officer" },
-      { property: "og:description", content: "Curated listings and stress-free lending in Central Texas." },
+      { title: "Prince Agrawal — Realtor & Loan Officer" },
+      {
+        name: "description",
+        content:
+          "Serving with Purpose. Leading with Integrity. Realtor & Loan Officer.",
+      },
+      {
+        property: "og:title",
+        content: "Prince Agrawal — Realtor & Loan Officer",
+      },
+      {
+        property: "og:description",
+        content: "Serving with Purpose. Leading with Integrity.",
+      },
     ],
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(featuredOpts),
   component: Page,
-  errorComponent: ({ error }) => <SiteLayout><Section><p>{error.message}</p></Section></SiteLayout>,
-  notFoundComponent: () => <SiteLayout><Section><p>Not found.</p></Section></SiteLayout>,
+  errorComponent: ({ error }) => (
+    <SiteLayout>
+      <Section>
+        <p>{error.message}</p>
+      </Section>
+    </SiteLayout>
+  ),
+  notFoundComponent: () => (
+    <SiteLayout>
+      <Section>
+        <p>Not found.</p>
+      </Section>
+    </SiteLayout>
+  ),
 });
 
 function Page() {
-  const { data: featured } = useSuspenseQuery(featuredOpts);
   return (
     <SiteLayout>
       <Hero />
-      <TrustBar />
-      <ServicesTeaser />
-      <Featured featured={featured} />
-      <TestimonialStrip />
-      <Cta />
+      <GlobalImpact />
+      <Accomplishments />
+      <FooterSection />
     </SiteLayout>
   );
 }
 
 function Hero() {
   return (
-    <section className="border-b border-border">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 md:px-8 py-12 md:py-24 md:grid-cols-2 md:items-center">
-        <div className="order-2 md:order-1">
-          <p className="eyebrow">Realtor + Loan Officer · Austin, TX</p>
-          <h1 className="display-1 mt-4">
-            A home you love. <br />
-            <span className="text-muted-foreground">Financing you understand.</span>
+    <section className="border-b border-border bg-background">
+      <div className="mx-auto max-w-7xl px-5 py-8 md:px-8 md:py-12">
+        {/* Architectural / Hero Banner Image */}
+        <div className="aspect-[16/6] w-full overflow-hidden rounded-md border border-border bg-muted">
+          <img
+            src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=1600&auto=format&fit=crop&q=80"
+            alt="Architectural structure"
+            className="h-full w-full object-cover"
+            loading="eager"
+          />
+        </div>
+
+        {/* Hero Copy */}
+        <div className="mt-8 text-center">
+          <h1 className="text-2xl font-extrabold uppercase tracking-tight text-foreground md:text-4xl">
+            Serving with Purpose. Leading with Integrity.
           </h1>
-          <p className="mt-6 max-w-lg text-base md:text-lg text-muted-foreground">
-            Most clients juggle a separate agent and lender. I do both — so your timeline,
-            terms, and paperwork stay in sync from first showing to keys in hand.
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
+            Engineer, entrepreneur, and social impact advocate. Practical solutions and strategic implementations.
           </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact" className="inline-flex h-12 items-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-              Let's Talk <ArrowRight className="ml-2 h-4 w-4" />
+
+          {/* Action Callouts */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
+            <Link
+              to="/realtor"
+              className="inline-flex h-11 items-center rounded-md bg-primary px-6 text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow transition-colors hover:bg-primary/90"
+            >
+              [Explore Real Estate Services]
             </Link>
-            <Link to="/listings" className="inline-flex h-12 items-center rounded-md border border-foreground/30 bg-transparent px-6 text-sm font-medium text-foreground hover:bg-muted">
-              Browse Listings
+            <Link
+              to="/loan-officer"
+              className="inline-flex h-11 items-center rounded-md bg-primary px-6 text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow transition-colors hover:bg-primary/90"
+            >
+              [Explore Loan & Refinance Options]
             </Link>
           </div>
         </div>
-        <div className="order-1 md:order-2">
-          <div className="aspect-[4/5] w-full overflow-hidden rounded-md border border-border bg-muted">
-            <img
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&auto=format&fit=crop&q=80"
-              alt="A modern home exterior in the late afternoon light"
-              className="photo-mono h-full w-full object-cover"
-              loading="eager"
+      </div>
+    </section>
+  );
+}
+
+const GLOBAL_ITEMS = [
+  {
+    icon: Globe,
+    title: "2024 AFS YOUTH ASSEMBLY CONFERENCE DELEGATE",
+    subtitle: "UN representative, UN representation",
+    badgeLink: "[CREDLY BADGE LINK]",
+  },
+  {
+    icon: Award,
+    title: "THE INTERNATIONAL CONGRESS OF YOUTH VOICES (ICYV)",
+    subtitle: "global network",
+    badgeLink: "",
+  },
+  {
+    icon: Sparkles,
+    title: "ASIAN SCIENCE CAMP 2016",
+    subtitle: "Enlightening youth knowledge",
+    badgeLink: "[OYAGP AMBASSADOR LINK]",
+  },
+];
+
+function GlobalImpact() {
+  return (
+    <Section className="border-b border-border bg-muted/30">
+      <div className="text-center">
+        <h2 className="text-xl font-extrabold uppercase tracking-wider text-foreground md:text-2xl">
+          Global Impact & Accomplishments
+        </h2>
+      </div>
+
+      <div className="mt-10 grid gap-8 md:grid-cols-3">
+        {GLOBAL_ITEMS.map((item, idx) => {
+          const Icon = item.icon;
+          return (
+            <div
+              key={idx}
+              className="flex flex-col items-center text-center p-6 rounded-md border border-border bg-card shadow-sm"
+            >
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Icon className="h-8 w-8" />
+              </div>
+              <h3 className="text-sm font-bold uppercase tracking-tight text-foreground">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-xs text-muted-foreground">
+                {item.subtitle}
+              </p>
+              {item.badgeLink && (
+                <span className="mt-4 text-[11px] font-semibold text-primary underline cursor-pointer">
+                  {item.badgeLink}
+                </span>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </Section>
+  );
+}
+
+const ACCOMPLISHMENT_CARDS = [
+  {
+    image:
+      "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&auto=format&fit=crop&q=80",
+    title: "2024 AFS YOUTH ASSEMBLY CONFERENCE DELEGATE",
+    subtitle: "UN representation",
+    badgeLink: "[CREDLY BADGE LINK]",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80",
+    title: "THE INTERNATIONAL CONGRESS OF YOUTH VOICES (ICYV)",
+    subtitle: "global network",
+    badgeLink: "",
+  },
+  {
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80",
+    title: "ASIAN SCIENCE CAMP 2016",
+    subtitle: "enlightening youth knowledge",
+    badgeLink: "[OYAGP AMBASSADOR LINK]",
+  },
+];
+
+function Accomplishments() {
+  return (
+    <Section>
+      <div className="text-center">
+        <h2 className="text-xl font-extrabold uppercase tracking-wider text-foreground md:text-2xl">
+          Accomplishments
+        </h2>
+      </div>
+
+      <div className="mt-10 grid gap-6 md:grid-cols-3">
+        {ACCOMPLISHMENT_CARDS.map((card, idx) => (
+          <div
+            key={idx}
+            className="overflow-hidden rounded-md border border-border bg-card shadow-sm transition-all hover:shadow-md"
+          >
+            <div className="aspect-[4/3] w-full overflow-hidden bg-muted">
+              <img
+                src={card.image}
+                alt={card.title}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="p-5 text-center">
+              <h3 className="text-xs font-bold uppercase text-foreground">
+                {card.title}
+              </h3>
+              <p className="mt-1 text-xs text-muted-foreground">
+                {card.subtitle}
+              </p>
+              {card.badgeLink && (
+                <p className="mt-3 text-[11px] font-semibold text-primary underline cursor-pointer">
+                  {card.badgeLink}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function FooterSection() {
+  return (
+    <footer className="border-t border-border bg-muted/40 py-8">
+      <div className="mx-auto max-w-7xl px-5 md:px-8 grid gap-6 md:grid-cols-3 md:items-center">
+        {/* Contact Info */}
+        <div className="space-y-1 text-xs text-muted-foreground">
+          <p className="font-semibold text-foreground">817-630-3361</p>
+          <p>prince@yetihomesllc.com</p>
+          <p>pagrawal@xpertrate.com</p>
+        </div>
+
+        {/* Social Links */}
+        <div className="flex items-center justify-start md:justify-center gap-4">
+          <a
+            href="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-border bg-background p-2 text-foreground hover:bg-accent"
+            aria-label="LinkedIn"
+          >
+            <svg
+              className="h-4 w-4 fill-current"
+              viewBox="0 0 24 24"
+            >
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+            </svg>
+          </a>
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded border border-border bg-background p-2 text-foreground hover:bg-accent"
+            aria-label="Instagram"
+          >
+            <svg
+              className="h-4 w-4 fill-current"
+              viewBox="0 0 24 24"
+            >
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+        </div>
+
+        {/* Newsletter Box */}
+        <div className="space-y-2">
+          <p className="text-xs font-bold uppercase tracking-wider text-foreground">
+            NEWSLETTER
+          </p>
+          <div className="flex">
+            <input
+              type="email"
+              placeholder="Signup our newsletter"
+              className="w-full rounded-l-md border border-r-0 border-border bg-background px-3 py-2 text-xs focus:outline-none"
             />
+            <button
+              className="flex items-center justify-center rounded-r-md bg-primary px-3 text-primary-foreground hover:bg-primary/90"
+              aria-label="Submit newsletter"
+            >
+              <Send className="h-3.5 w-3.5" />
+            </button>
           </div>
         </div>
       </div>
-    </section>
-  );
-}
-
-const STATS = [
-  { v: "14+", l: "Years in real estate & lending" },
-  { v: "320", l: "Families served" },
-  { v: "4.9★", l: "Average client rating" },
-  { v: "$210M", l: "Closed sales volume" },
-];
-
-function TrustBar() {
-  return (
-    <section className="border-b border-border bg-muted">
-      <div className="mx-auto max-w-7xl px-5 md:px-8 py-10 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
-        {STATS.map((s) => (
-          <div key={s.l} className="text-center md:text-left">
-            <p className="display-2">{s.v}</p>
-            <p className="mt-1 text-xs md:text-sm text-muted-foreground">{s.l}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-const PILLARS = [
-  { icon: Home, title: "Buying", body: "Curated tours, sharp negotiation, and an aligned lender on day one." },
-  { icon: KeyRound, title: "Selling", body: "Pricing strategy, staging guidance, and a marketing plan that lands offers fast." },
-  { icon: Banknote, title: "Financing", body: "Conventional, FHA, VA, and jumbo. Pre-approval in 24 hours, no surprises at closing." },
-];
-
-function ServicesTeaser() {
-  return (
-    <Section>
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-        <div>
-          <p className="eyebrow">What I do</p>
-          <h2 className="display-2 mt-3">One partner. Two licenses. Zero hand-offs.</h2>
-        </div>
-        <Link to="/services" className="text-sm underline underline-offset-4 text-muted-foreground hover:text-foreground">
-          See all services →
-        </Link>
-      </div>
-      <div className="grid gap-6 md:grid-cols-3">
-        {PILLARS.map(({ icon: Icon, title, body }) => (
-          <div key={title} className="rounded-md border border-border bg-card p-7 hover:shadow-sm transition-shadow">
-            <Icon className="h-6 w-6 text-foreground" />
-            <h3 className="mt-5 text-xl">{title}</h3>
-            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{body}</p>
-          </div>
-        ))}
-      </div>
-    </Section>
-  );
-}
-
-function Featured({ featured }: { featured: Listing[] }) {
-  return (
-    <Section muted>
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-        <div>
-          <p className="eyebrow">Featured listings</p>
-          <h2 className="display-2 mt-3">Currently on the market</h2>
-        </div>
-        <Link to="/listings" className="text-sm underline underline-offset-4 text-muted-foreground hover:text-foreground">
-          View all listings →
-        </Link>
-      </div>
-      {featured.length === 0 ? (
-        <div className="rounded-md border border-dashed border-border bg-background p-10 text-center text-muted-foreground">
-          New listings landing soon. Check back, or{" "}
-          <Link to="/contact" className="underline">tell me what you're looking for</Link>.
-        </div>
-      ) : (
-        <div className="grid gap-6 md:grid-cols-3">
-          {featured.map((l) => <ListingCard key={l.id} listing={l} />)}
-        </div>
-      )}
-    </Section>
-  );
-}
-
-function TestimonialStrip() {
-  return (
-    <Section>
-      <div className="mx-auto max-w-3xl text-center">
-        <div className="flex justify-center gap-1 text-foreground">
-          {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-5 w-5 fill-current" />)}
-        </div>
-        <p className="display-2 mt-6">
-          “Prince handled the loan AND the offer. Two emails a day, never an unanswered question. We closed in 23 days.”
-        </p>
-        <p className="mt-6 eyebrow">Avery & Daniel · First-time buyers</p>
-        <Link to="/testimonials" className="mt-8 inline-block text-sm underline underline-offset-4 text-muted-foreground hover:text-foreground">
-          Read more stories →
-        </Link>
-      </div>
-    </Section>
-  );
-}
-
-function Cta() {
-  return (
-    <section className="border-t border-border bg-foreground text-background">
-      <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 md:py-20 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div>
-          <h2 className="display-2 text-background">Ready to start the conversation?</h2>
-          <p className="mt-3 text-background/70 max-w-xl">No-pressure 20-minute call. Bring questions about a neighborhood, a rate quote, or a listing on Zillow you can't stop thinking about.</p>
-        </div>
-        <Link to="/contact" className="inline-flex h-12 items-center rounded-md bg-background px-6 text-sm font-medium text-foreground hover:bg-background/90">
-          Book a call <ArrowRight className="ml-2 h-4 w-4" />
-        </Link>
-      </div>
-    </section>
+    </footer>
   );
 }

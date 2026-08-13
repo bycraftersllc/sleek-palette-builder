@@ -4,78 +4,91 @@ import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { to: "/", label: "Home" },
-  { to: "/listings", label: "Listings" },
-  { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/testimonials", label: "Testimonials" },
-  { to: "/articles", label: "Articles" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "HOME" },
+  { to: "/realtor", label: "REALTOR" },
+  { to: "/loanofficer", label: "LOAN OFFICER" },
+  { to: "/newartofliving", label: "NEW ART OF LIVING" },
 ] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/85 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-5 md:px-8">
-        <Link to="/" className="font-display text-lg tracking-tight">
-          Prince Agrawal<span className="text-muted-foreground"> · Realty + Lending</span>
-        </Link>
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
+      <div className="mx-auto max-w-7xl px-5 py-3 md:px-8">
+        <div className="flex items-center justify-between">
+          {/* Logo & Brand Title */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded border-2 border-primary bg-primary/10 text-primary font-bold text-xl tracking-tighter">
+              P
+            </div>
+            <div>
+              <h1 className="text-base md:text-lg font-black uppercase tracking-tight text-foreground leading-none">
+                Prince Agrawal - Realtor & Loan Officer
+              </h1>
+              <p className="mt-1 text-[10px] md:text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                Serving with Purpose. Leading with Integrity.
+              </p>
+            </div>
+          </Link>
 
-        <nav className="hidden lg:flex items-center gap-7">
-          {NAV.map((n) => (
-            <Link
-              key={n.to}
-              to={n.to}
-              className={cn(
-                "text-sm text-foreground/70 transition-colors hover:text-foreground",
-                pathname === n.to && "text-foreground font-medium"
-              )}
-            >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
+          {/* Mobile Hamburger Button */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex lg:hidden h-10 w-10 items-center justify-center rounded-md border border-border"
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
 
-        <Link
-          to="/contact"
-          className="hidden lg:inline-flex h-10 items-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          Let's Talk
-        </Link>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex lg:hidden h-11 w-11 items-center justify-center rounded-md border border-border"
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-      </div>
-
-      {open && (
-        <div className="lg:hidden border-t border-border bg-background">
-          <nav className="mx-auto flex max-w-7xl flex-col px-5 py-3">
-            {NAV.map((n) => (
+        {/* Navigation Bar Links (Desktop) */}
+        <nav className="hidden lg:flex items-center justify-center gap-8 mt-3 pt-2 border-t border-border/50 text-xs font-bold uppercase tracking-wider">
+          {NAV.map((n) => {
+            const isActive = pathname === n.to;
+            return (
               <Link
                 key={n.to}
                 to={n.to}
-                className="py-3 text-base text-foreground border-b border-border last:border-b-0"
+                className={cn(
+                  "py-1 transition-colors hover:text-primary relative",
+                  isActive
+                    ? "text-primary font-extrabold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
+                    : "text-foreground/80"
+                )}
               >
                 {n.label}
               </Link>
-            ))}
-            <Link
-              to="/contact"
-              className="mt-3 inline-flex h-12 items-center justify-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground"
-            >
-              Let's Talk
-            </Link>
+            );
+          })}
+        </nav>
+      </div>
+
+      {/* Mobile Menu Dropdown */}
+      {open && (
+        <div className="lg:hidden border-t border-border bg-background">
+          <nav className="mx-auto flex max-w-7xl flex-col px-5 py-3 text-xs font-bold uppercase tracking-wider">
+            {NAV.map((n) => {
+              const isActive = pathname === n.to;
+              return (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className={cn(
+                    "py-3 border-b border-border/60 last:border-b-0",
+                    isActive ? "text-primary font-extrabold" : "text-foreground/80"
+                  )}
+                >
+                  {n.label}
+                </Link>
+              );
+            })}
           </nav>
         </div>
       )}
@@ -85,30 +98,10 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-muted">
-      <div className="mx-auto max-w-7xl px-5 md:px-8 py-12 grid gap-8 md:grid-cols-3">
-        <div>
-          <p className="font-display text-xl">Prince Agrawal</p>
-          <p className="mt-2 text-sm text-muted-foreground max-w-xs">
-            Licensed Realtor & Loan Officer. Helping you buy, sell, and finance — with one trusted partner from start to close.
-          </p>
-        </div>
-        <div className="text-sm">
-          <p className="eyebrow mb-3">Visit</p>
-          <p className="text-foreground/80">120 Market Street, Suite 410</p>
-          <p className="text-foreground/80">Austin, TX 78701</p>
-        </div>
-        <div className="text-sm">
-          <p className="eyebrow mb-3">Reach out</p>
-          <p className="text-foreground/80">(512) 555-0142</p>
-          <p className="text-foreground/80">hello@princeagrawal.com</p>
-        </div>
-      </div>
-      <div className="border-t border-border">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 py-5 flex flex-col md:flex-row justify-between gap-2 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Prince Agrawal. All rights reserved.</p>
-          <p>Equal Housing Opportunity · NMLS #1234567</p>
-        </div>
+    <footer className="border-t border-border bg-muted/20">
+      <div className="mx-auto max-w-7xl px-5 md:px-8 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-muted-foreground">
+        <p>© {new Date().getFullYear()} Prince Agrawal. All rights reserved.</p>
+        <p>Serving with Purpose. Leading with Integrity.</p>
       </div>
     </footer>
   );
@@ -136,8 +129,8 @@ export function Section({
   id?: string;
 }) {
   return (
-    <section id={id} className={cn(muted && "bg-muted", className)}>
-      <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 md:py-24">{children}</div>
+    <section id={id} className={cn(muted && "bg-muted/40", className)}>
+      <div className="mx-auto max-w-7xl px-5 md:px-8 py-10 md:py-16">{children}</div>
     </section>
   );
 }
