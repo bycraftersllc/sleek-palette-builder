@@ -89,7 +89,7 @@ function Hero() {
               [Explore Real Estate Services]
             </Link>
             <Link
-              to="/loan-officer"
+              to="/loanofficer"
               className="inline-flex h-11 items-center rounded-md bg-primary px-6 text-xs font-semibold uppercase tracking-wider text-primary-foreground shadow transition-colors hover:bg-primary/90"
             >
               [Explore Loan & Refinance Options]
