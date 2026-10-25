@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { SiteLayout, Section } from "@/components/site-shell";
 import { listFeaturedListings } from "@/lib/listings.functions";
-import { Globe, Award, Sparkles, Send } from "lucide-react";
+import { Globe, Award, Sparkles, Send, ExternalLink } from "lucide-react";
 
 const featuredOpts = queryOptions({
   queryKey: ["featured-listings"],
@@ -51,7 +51,6 @@ function Page() {
     <SiteLayout>
       <Hero />
       <GlobalImpact />
-      <Accomplishments />
       <FooterSection />
     </SiteLayout>
   );
@@ -104,21 +103,26 @@ function Hero() {
 const GLOBAL_ITEMS = [
   {
     icon: Globe,
+    image: "/AFS-Assembly.jpg",
     title: "2024 AFS YOUTH ASSEMBLY CONFERENCE DELEGATE",
-    subtitle: "UN representative, UN representation",
-    badgeLink: "[CREDLY BADGE LINK]",
+    badgeLinkText: "View Credly Badge",
+    badgeUrl: "https://www.credly.com/badges/071a1e5d-c1ea-44d2-bcc5-c6d89fad32cc/linked_in_profile",
   },
   {
     icon: Award,
+    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80",
     title: "THE INTERNATIONAL CONGRESS OF YOUTH VOICES (ICYV)",
-    subtitle: "global network",
-    badgeLink: "",
+    badgeLinkText: "View ICYV Feature",
+    badgeUrl: "https://kitchensisters.org/present/youth-on-fire-the-international-congress-of-youth-voices/",
   },
   {
     icon: Sparkles,
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80",
     title: "ASIAN SCIENCE CAMP 2016",
-    subtitle: "Enlightening youth knowledge",
-    badgeLink: "[OYAGP AMBASSADOR LINK]",
+    badgeUrls: [
+      { label: "OYAOP Ambassador", url: "https://oyaop.com/ambassador/prince-agrawal/" },
+      { label: "Blog Reflection", url: "https://xicalevelsociety.blogspot.com/2016/09/looking-back-at-asian-science-camp-2016.html" }
+    ],
   },
 ];
 
@@ -131,97 +135,59 @@ function GlobalImpact() {
         </h2>
       </div>
 
-      <div className="mt-10 grid gap-8 md:grid-cols-3">
+      <div className="mt-10 grid gap-6 md:grid-cols-3">
         {GLOBAL_ITEMS.map((item, idx) => {
           const Icon = item.icon;
           return (
             <div
               key={idx}
-              className="flex flex-col items-center text-center p-6 rounded-md border border-border bg-card shadow-sm"
+              className="flex flex-col justify-between overflow-hidden rounded-md border border-border bg-card shadow-sm transition-all hover:shadow-md"
             >
-              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <Icon className="h-8 w-8" />
+              <div>
+                <div className="aspect-[4/3] w-full overflow-hidden bg-muted">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-5 text-center flex flex-col items-center">
+                  <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xs font-bold uppercase tracking-tight text-foreground">
+                    {item.title}
+                  </h3>
+                </div>
               </div>
-              <h3 className="text-sm font-bold uppercase tracking-tight text-foreground">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-xs text-muted-foreground">
-                {item.subtitle}
-              </p>
-              {item.badgeLink && (
-                <span className="mt-4 text-[11px] font-semibold text-primary underline cursor-pointer">
-                  {item.badgeLink}
-                </span>
-              )}
+
+              {/* Explicit Link Buttons */}
+              <div className="p-5 pt-0 flex flex-wrap justify-center gap-2">
+                {item.badgeUrl && (
+                  <a
+                    href={item.badgeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary transition-colors hover:bg-primary/20"
+                  >
+                    {item.badgeLinkText} <ExternalLink className="h-3 w-3" />
+                  </a>
+                )}
+                {item.badgeUrls && item.badgeUrls.map((b, i) => (
+                  <a
+                    key={i}
+                    href={b.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary transition-colors hover:bg-primary/20"
+                  >
+                    {b.label} <ExternalLink className="h-3 w-3" />
+                  </a>
+                ))}
+              </div>
             </div>
           );
         })}
-      </div>
-    </Section>
-  );
-}
-
-const ACCOMPLISHMENT_CARDS = [
-  {
-    image:
-      "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=600&auto=format&fit=crop&q=80",
-    title: "2024 AFS YOUTH ASSEMBLY CONFERENCE DELEGATE",
-    subtitle: "UN representation",
-    badgeLink: "[CREDLY BADGE LINK]",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80",
-    title: "THE INTERNATIONAL CONGRESS OF YOUTH VOICES (ICYV)",
-    subtitle: "global network",
-    badgeLink: "",
-  },
-  {
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80",
-    title: "ASIAN SCIENCE CAMP 2016",
-    subtitle: "enlightening youth knowledge",
-    badgeLink: "[OYAGP AMBASSADOR LINK]",
-  },
-];
-
-function Accomplishments() {
-  return (
-    <Section>
-      <div className="text-center">
-        <h2 className="text-xl font-extrabold uppercase tracking-wider text-foreground md:text-2xl">
-          Accomplishments
-        </h2>
-      </div>
-
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {ACCOMPLISHMENT_CARDS.map((card, idx) => (
-          <div
-            key={idx}
-            className="overflow-hidden rounded-md border border-border bg-card shadow-sm transition-all hover:shadow-md"
-          >
-            <div className="aspect-[4/3] w-full overflow-hidden bg-muted">
-              <img
-                src={card.image}
-                alt={card.title}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="p-5 text-center">
-              <h3 className="text-xs font-bold uppercase text-foreground">
-                {card.title}
-              </h3>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {card.subtitle}
-              </p>
-              {card.badgeLink && (
-                <p className="mt-3 text-[11px] font-semibold text-primary underline cursor-pointer">
-                  {card.badgeLink}
-                </p>
-              )}
-            </div>
-          </div>
-        ))}
       </div>
     </Section>
   );
@@ -241,7 +207,7 @@ function FooterSection() {
         {/* Social Links */}
         <div className="flex items-center justify-start md:justify-center gap-4">
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/prince-agrawal-97029015b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded border border-border bg-background p-2 text-foreground hover:bg-accent"
@@ -255,7 +221,7 @@ function FooterSection() {
             </svg>
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/princehomesandloans?igsh=ajgydHV5ZWtkNzd6&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded border border-border bg-background p-2 text-foreground hover:bg-accent"

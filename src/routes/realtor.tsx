@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, Section } from "@/components/site-shell";
 import {
-  FileText,
-  CreditCard,
   Sparkles,
   Megaphone,
   Home,
@@ -47,8 +45,35 @@ function Page() {
   );
 }
 
-{/* Section 1: Business Card & Attached Documents */}
+{/* Section 1: Business Card & Contact QR Code */}
 function HeroDocs() {
+  // Function to generate and download the vCard (.vcf) file
+  const handleSaveContact = () => {
+    const vcardData = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:Agrawal;Prince;;;",
+      "FN:Prince Agrawal",
+      "ORG:YETI HOMES, LLC",
+      "TITLE:Realtor®",
+      "TEL;TYPE=WORK,VOICE:+18176303361",
+      "EMAIL;TYPE=WORK:Prince@yetihomesllc.com",
+      "ADR;TYPE=WORK:;;222 W. Las Colinas Blvd. Suite 1650E;Irving;TX;75039;United States",
+      "URL:https://www.princeagrawal.com",
+      "END:VCARD",
+    ].join("\n");
+
+    const blob = new Blob([vcardData], { type: "text/vcard;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "Prince_Agrawal_Realtor.vcf");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <Section className="border-b border-border bg-background py-10 md:py-16">
       <div className="mx-auto max-w-4xl">
@@ -57,32 +82,44 @@ function HeroDocs() {
         </h1>
 
         <div className="mt-10 grid gap-8 md:grid-cols-2">
-          {/* Digital Business Card (DOTCARD) */}
-          <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border bg-card p-8 text-center shadow-sm">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <CreditCard className="h-8 w-8" />
+          {/* Digital Business Card (DOTCARD) with Image Preview */}
+          <div className="flex flex-col items-center justify-between rounded-lg border-2 border-dashed border-border bg-card p-6 text-center shadow-sm">
+            <div className="w-full overflow-hidden rounded-md border border-border shadow-sm bg-muted">
+              <img
+                src="/realtor-business-card.png" 
+                alt="Prince Agrawal Digital Business Card"
+                className="h-auto w-full object-contain"
+              />
             </div>
-            <h2 className="mt-4 text-sm font-bold uppercase tracking-tight text-foreground">
-              Digital Business Card
-            </h2>
-            <p className="mt-1 text-xs text-muted-foreground">(DOTCARD)</p>
-            <button className="mt-4 rounded-md bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground hover:bg-primary/90">
-              Save Contact
-            </button>
+            <div className="mt-4 w-full">
+              <h2 className="text-sm font-bold uppercase tracking-tight text-foreground">
+                Digital Business Card
+              </h2>
+              <p className="mt-0.5 text-xs text-muted-foreground">(DOTCARD)</p>
+              <button
+                onClick={handleSaveContact}
+                className="mt-3 w-full rounded-md bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow transition-colors hover:bg-primary/90"
+              >
+                Save Contact
+              </button>
+            </div>
           </div>
 
-          {/* Attached Documents (PDFs) */}
-          <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-border bg-card p-8 text-center shadow-sm">
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-              <FileText className="h-8 w-8" />
+          {/* Contact QR Code Preview (No Button) */}
+          <div className="flex flex-col items-center justify-between rounded-lg border-2 border-dashed border-border bg-card p-6 text-center shadow-sm">
+            <div className="w-full overflow-hidden rounded-md border border-border shadow-sm bg-muted">
+              <img
+                src="/contact-qr.png"
+                alt="Contact QR Code"
+                className="h-auto w-full object-contain"
+              />
             </div>
-            <h2 className="mt-4 text-sm font-bold uppercase tracking-tight text-foreground">
-              Attached Documents
-            </h2>
-            <p className="mt-1 text-xs text-muted-foreground">(PDFs)</p>
-            <button className="mt-4 rounded-md border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted">
-              Download Resources
-            </button>
+            <div className="mt-4 w-full">
+              <h2 className="text-sm font-bold uppercase tracking-tight text-foreground">
+                Contact QR Code
+              </h2>
+              <p className="mt-0.5 text-xs text-muted-foreground">(SCAN TO SAVE)</p>
+            </div>
           </div>
         </div>
       </div>
