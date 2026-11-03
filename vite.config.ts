@@ -4,10 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   // Force enable nitro so it doesn't skip the deployment plugin
-  nitro: true, 
+  nitro: true,
   tanstackStart: {
     server: {
-      entry: "server"
+      entry: "server",
     },
   },
   vite: {

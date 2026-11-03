@@ -45,7 +45,9 @@ function Page() {
   );
 }
 
-{/* Section 1: Business Card & Contact QR Code */}
+{
+  /* Section 1: Business Card & Contact QR Code */
+}
 function HeroDocs() {
   // Function to generate and download the vCard (.vcf) file
   const handleSaveContact = () => {
@@ -86,7 +88,7 @@ function HeroDocs() {
           <div className="flex flex-col items-center justify-between rounded-lg border-2 border-dashed border-border bg-card p-6 text-center shadow-sm">
             <div className="w-full overflow-hidden rounded-md border border-border shadow-sm bg-muted">
               <img
-                src="/realtor-business-card.png" 
+                src="/realtor-business-card.png"
                 alt="Prince Agrawal Digital Business Card"
                 className="h-auto w-full object-contain"
               />
@@ -138,7 +140,9 @@ const LISTING_SERVICES = [
   { icon: Clock, title: "Short-term rental experience & consultation." },
 ];
 
-{/* Section 2: Services (Listing Service) */}
+{
+  /* Section 2: Services (Listing Service) */
+}
 function ServicesListingSection() {
   return (
     <Section className="border-b border-border bg-muted/20">
@@ -159,9 +163,7 @@ function ServicesListingSection() {
               <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded bg-primary/10 text-primary">
                 <Icon className="h-4 w-4" />
               </div>
-              <span className="text-xs font-medium text-foreground">
-                {item.title}
-              </span>
+              <span className="text-xs font-medium text-foreground">{item.title}</span>
             </div>
           );
         })}
@@ -182,7 +184,9 @@ const STEPS = [
   { step: "9", title: "Move-in!" },
 ];
 
-{/* Section 3: Educational Feature & Steps Roadmap */}
+{
+  /* Section 3: Educational Feature & Steps Roadmap */
+}
 function RoadmapSection() {
   return (
     <Section className="border-b border-border bg-background">
@@ -190,9 +194,7 @@ function RoadmapSection() {
         <h2 className="text-xl font-extrabold uppercase tracking-wider text-foreground md:text-2xl">
           Educational Feature: Steps in Closing a Property
         </h2>
-        <p className="mt-2 text-xs font-semibold uppercase text-muted-foreground">
-          Flow Roadmap
-        </p>
+        <p className="mt-2 text-xs font-semibold uppercase text-muted-foreground">Flow Roadmap</p>
       </div>
 
       <div className="mt-10 mx-auto max-w-4xl rounded-lg border border-border bg-muted/30 p-6 md:p-10">
@@ -248,7 +250,9 @@ const REALTOR_TESTIMONIALS = [
   },
 ];
 
-{/* Section 4: Testimonials Grid */}
+{
+  /* Section 4: Testimonials Grid */
+}
 function TestimonialsSection() {
   return (
     <Section className="bg-muted/10">
@@ -271,9 +275,7 @@ function TestimonialsSection() {
                 className="h-full w-full object-cover"
               />
             </div>
-            <p className="mt-4 text-xs italic text-muted-foreground leading-relaxed">
-              "{t.text}"
-            </p>
+            <p className="mt-4 text-xs italic text-muted-foreground leading-relaxed">"{t.text}"</p>
           </div>
         ))}
       </div>

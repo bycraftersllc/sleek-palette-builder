@@ -5,7 +5,11 @@ export const Route = createFileRoute("/newartofliving")({
   head: () => ({
     meta: [
       { title: "New Art of Living — Prince Agrawal" },
-      { name: "description", content: "Engineer, entrepreneur, and social impact advocate. Exploring community, architecture, wealth, and living concepts." },
+      {
+        name: "description",
+        content:
+          "Engineer, entrepreneur, and social impact advocate. Exploring community, architecture, wealth, and living concepts.",
+      },
     ],
   }),
   component: Page,
@@ -26,10 +30,13 @@ function Page() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 max-w-5xl mx-auto mb-16 items-center">
           <div className="md:col-span-7 space-y-4 text-sm text-foreground/90 leading-relaxed">
             <p className="font-semibold">
-              Engineer, entrepreneur, and social impact advocate. Engineer, entrepreneur, and social impact advocate.
+              Engineer, entrepreneur, and social impact advocate. Engineer, entrepreneur, and social
+              impact advocate.
             </p>
             <p className="text-muted-foreground">
-              Enlightening youth of odor mielris extractor.rv crerten leend cosea ss provoont commaniation learni nca oronaes ton and snariosale waed, and ont sorinecnires and mudaualial abrders inriueations.
+              Enlightening youth of odor mielris extractor.rv crerten leend cosea ss provoont
+              commaniation learni nca oronaes ton and snariosale waed, and ont sorinecnires and
+              mudaualial abrders inriueations.
             </p>
           </div>
           <div className="md:col-span-5">
@@ -95,7 +102,8 @@ function Page() {
                 About
               </h2>
               <p className="text-xs text-muted-foreground leading-relaxed max-w-sm mx-auto">
-                Coustion content ecarut specific content - specific corterim on the ellx Coneatds, investmont eneixcitea mealth comer new dirten content for specific content.
+                Coustion content ecarut specific content - specific corterim on the ellx Coneatds,
+                investmont eneixcitea mealth comer new dirten content for specific content.
               </p>
             </div>
 
@@ -107,9 +115,7 @@ function Page() {
               <div className="w-16 h-16 rounded-full border-2 border-slate-900 flex items-center justify-center mx-auto mb-3 text-slate-900 font-black text-xl">
                 MB
               </div>
-              <p className="text-xs text-muted-foreground font-medium">
-                Builder info
-              </p>
+              <p className="text-xs text-muted-foreground font-medium">Builder info</p>
             </div>
 
             {/* Articles Block */}
@@ -121,7 +127,8 @@ function Page() {
                 Articles
               </h2>
               <p className="text-xs text-muted-foreground leading-relaxed max-w-sm mx-auto">
-                Question curtorv of wealth, investment, cash value topics menalring wealth, investment, cash value topics.
+                Question curtorv of wealth, investment, cash value topics menalring wealth,
+                investment, cash value topics.
               </p>
             </div>
           </div>
@@ -139,17 +146,25 @@ function Page() {
 
             {/* Social Icons */}
             <div className="flex justify-center gap-4 text-foreground font-bold text-lg">
-              <a href="#" className="p-2 border border-border rounded hover:bg-slate-100 transition-colors">
+              <a
+                href="#"
+                className="p-2 border border-border rounded hover:bg-slate-100 transition-colors"
+              >
                 in
               </a>
-              <a href="#" className="p-2 border border-border rounded hover:bg-slate-100 transition-colors">
+              <a
+                href="#"
+                className="p-2 border border-border rounded hover:bg-slate-100 transition-colors"
+              >
                 📷
               </a>
             </div>
 
             {/* Newsletter Signup */}
             <div className="space-y-2">
-              <p className="text-xs font-bold uppercase tracking-wider text-foreground">Newsletter</p>
+              <p className="text-xs font-bold uppercase tracking-wider text-foreground">
+                Newsletter
+              </p>
               <form onSubmit={(e) => e.preventDefault()} className="flex gap-2">
                 <input
                   type="email"

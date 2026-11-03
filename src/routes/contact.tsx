@@ -10,9 +10,17 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Prince Agrawal" },
-      { name: "description", content: "Get in touch with Prince Agrawal for a 20-minute, no-pressure conversation about your next home or loan." },
+      {
+        name: "description",
+        content:
+          "Get in touch with Prince Agrawal for a 20-minute, no-pressure conversation about your next home or loan.",
+      },
       { property: "og:title", content: "Contact — Prince Agrawal" },
-      { property: "og:description", content: "Get in touch for a 20-minute, no-pressure conversation about your next home or loan." },
+      {
+        property: "og:description",
+        content:
+          "Get in touch for a 20-minute, no-pressure conversation about your next home or loan.",
+      },
     ],
   }),
   component: Page,
@@ -52,8 +60,8 @@ function Page() {
             <p className="eyebrow">Get in touch</p>
             <h1 className="display-1 mt-4">Let's Talk.</h1>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-              Tell me a little about what you're looking for. I read every message myself
-              and reply within one business day — usually much sooner.
+              Tell me a little about what you're looking for. I read every message myself and reply
+              within one business day — usually much sooner.
             </p>
             <ul className="mt-8 space-y-2 text-sm text-muted-foreground">
               <li>1. You send a message.</li>
@@ -61,9 +69,18 @@ function Page() {
               <li>3. We make a plan that fits your timeline. No pressure, ever.</li>
             </ul>
             <div className="mt-10 space-y-3 text-sm">
-              <p className="flex items-center gap-3"><Phone className="h-4 w-4 text-muted-foreground" /><span>(512) 555-0142</span></p>
-              <p className="flex items-center gap-3"><Mail className="h-4 w-4 text-muted-foreground" /><span>hello@princeagrawal.com</span></p>
-              <p className="flex items-center gap-3"><MapPin className="h-4 w-4 text-muted-foreground" /><span>120 Market Street, Suite 410, Austin, TX</span></p>
+              <p className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-muted-foreground" />
+                <span>(512) 555-0142</span>
+              </p>
+              <p className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-muted-foreground" />
+                <span>hello@princeagrawal.com</span>
+              </p>
+              <p className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-muted-foreground" />
+                <span>120 Market Street, Suite 410, Austin, TX</span>
+              </p>
             </div>
           </div>
 
@@ -99,13 +116,25 @@ function Page() {
 }
 
 function Field({
-  label, name, type = "text", textarea = false, required = false,
-}: { label: string; name: string; type?: string; textarea?: boolean; required?: boolean }) {
+  label,
+  name,
+  type = "text",
+  textarea = false,
+  required = false,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  textarea?: boolean;
+  required?: boolean;
+}) {
   const common =
     "w-full rounded-md bg-muted border border-transparent px-4 py-3 text-base text-foreground placeholder:text-muted-foreground transition-colors focus:bg-background focus:border-foreground focus:outline-none";
   return (
     <label className="block">
-      <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-2">{label}</span>
+      <span className="block text-xs uppercase tracking-widest text-muted-foreground mb-2">
+        {label}
+      </span>
       {textarea ? (
         <textarea name={name} required={required} rows={5} className={common} />
       ) : (

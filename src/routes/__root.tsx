@@ -52,7 +52,10 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => { router.invalidate(); reset(); }}
+            onClick={() => {
+              router.invalidate();
+              reset();
+            }}
             className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90"
           >
             Try again
@@ -75,21 +78,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Prince Agrawal — Realtor & Loan Officer" },
-      { name: "description", content: "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence." },
+      {
+        name: "description",
+        content:
+          "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence.",
+      },
       { property: "og:title", content: "Prince Agrawal — Realtor & Loan Officer" },
-      { property: "og:description", content: "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence." },
+      {
+        property: "og:description",
+        content:
+          "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Prince Agrawal — Realtor & Loan Officer" },
-      { name: "twitter:description", content: "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18615b7c-ae53-4a90-afe4-0595f19321f4/id-preview-0b4908be--9aa9369a-d8a3-436a-a45a-96957e6116eb.lovable.app-1780953860654.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18615b7c-ae53-4a90-afe4-0595f19321f4/id-preview-0b4908be--9aa9369a-d8a3-436a-a45a-96957e6116eb.lovable.app-1780953860654.png" },
+      {
+        name: "twitter:description",
+        content:
+          "Curated homes and stress-free financing. A modern realtor and loan officer helping you buy, sell, and finance with confidence.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18615b7c-ae53-4a90-afe4-0595f19321f4/id-preview-0b4908be--9aa9369a-d8a3-436a-a45a-96957e6116eb.lovable.app-1780953860654.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/18615b7c-ae53-4a90-afe4-0595f19321f4/id-preview-0b4908be--9aa9369a-d8a3-436a-a45a-96957e6116eb.lovable.app-1780953860654.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -117,7 +143,9 @@ function RootComponent() {
   const router = useRouter();
 
   useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event) => {
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       router.invalidate();
       if (event !== "SIGNED_OUT") queryClient.invalidateQueries();

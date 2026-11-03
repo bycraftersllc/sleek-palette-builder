@@ -12,7 +12,7 @@ export const sendContactMessage = createServerFn({ method: "POST" })
   .inputValidator((d) => schema.parse(d))
   .handler(async ({ data }) => {
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const db = supabaseAdmin as any;
+    const db = supabaseAdmin;
     const { error } = await db.from("contact_messages").insert({
       name: data.name,
       email: data.email,

@@ -1,4 +1,3 @@
-
 # Personal Brand Site — Realtor & Loan Officer
 
 A 7-page, fully responsive marketing site in a strict gray & white palette, with Supabase powering a small backend so you can add/edit/delete featured listings yourself.

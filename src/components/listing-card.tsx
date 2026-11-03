@@ -43,9 +43,18 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
           {l.address}, {l.city}, {l.state}
         </p>
         <div className="mt-4 flex gap-5 text-sm text-muted-foreground">
-          <span className="inline-flex items-center gap-1.5"><BedDouble className="h-4 w-4" />{l.beds} bd</span>
-          <span className="inline-flex items-center gap-1.5"><Bath className="h-4 w-4" />{l.baths} ba</span>
-          <span className="inline-flex items-center gap-1.5"><Maximize2 className="h-4 w-4" />{l.sqft.toLocaleString()} sqft</span>
+          <span className="inline-flex items-center gap-1.5">
+            <BedDouble className="h-4 w-4" />
+            {l.beds} bd
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Bath className="h-4 w-4" />
+            {l.baths} ba
+          </span>
+          <span className="inline-flex items-center gap-1.5">
+            <Maximize2 className="h-4 w-4" />
+            {l.sqft.toLocaleString()} sqft
+          </span>
         </div>
       </div>
     </Link>

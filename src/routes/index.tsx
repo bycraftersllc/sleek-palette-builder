@@ -15,8 +15,7 @@ export const Route = createFileRoute("/")({
       { title: "Prince Agrawal — Realtor & Loan Officer" },
       {
         name: "description",
-        content:
-          "Serving with Purpose. Leading with Integrity. Realtor & Loan Officer.",
+        content: "Serving with Purpose. Leading with Integrity. Realtor & Loan Officer.",
       },
       {
         property: "og:title",
@@ -76,7 +75,8 @@ function Hero() {
             Serving with Purpose. Leading with Integrity.
           </h1>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
-            Engineer, entrepreneur, and social impact advocate. Practical solutions and strategic implementations.
+            Engineer, entrepreneur, and social impact advocate. Practical solutions and strategic
+            implementations.
           </p>
 
           {/* Action Callouts */}
@@ -106,22 +106,29 @@ const GLOBAL_ITEMS = [
     image: "/AFS-Assembly.jpg",
     title: "2024 AFS YOUTH ASSEMBLY CONFERENCE DELEGATE",
     badgeLinkText: "View Credly Badge",
-    badgeUrl: "https://www.credly.com/badges/071a1e5d-c1ea-44d2-bcc5-c6d89fad32cc/linked_in_profile",
+    badgeUrl:
+      "https://www.credly.com/badges/071a1e5d-c1ea-44d2-bcc5-c6d89fad32cc/linked_in_profile",
   },
   {
     icon: Award,
-    image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop&q=80",
     title: "THE INTERNATIONAL CONGRESS OF YOUTH VOICES (ICYV)",
     badgeLinkText: "View ICYV Feature",
-    badgeUrl: "https://kitchensisters.org/present/youth-on-fire-the-international-congress-of-youth-voices/",
+    badgeUrl:
+      "https://kitchensisters.org/present/youth-on-fire-the-international-congress-of-youth-voices/",
   },
   {
     icon: Sparkles,
-    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80",
+    image:
+      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=600&auto=format&fit=crop&q=80",
     title: "ASIAN SCIENCE CAMP 2016",
     badgeUrls: [
       { label: "OYAOP Ambassador", url: "https://oyaop.com/ambassador/prince-agrawal/" },
-      { label: "Blog Reflection", url: "https://xicalevelsociety.blogspot.com/2016/09/looking-back-at-asian-science-camp-2016.html" }
+      {
+        label: "Blog Reflection",
+        url: "https://xicalevelsociety.blogspot.com/2016/09/looking-back-at-asian-science-camp-2016.html",
+      },
     ],
   },
 ];
@@ -145,11 +152,7 @@ function GlobalImpact() {
             >
               <div>
                 <div className="aspect-[4/3] w-full overflow-hidden bg-muted">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover"
-                  />
+                  <img src={item.image} alt={item.title} className="h-full w-full object-cover" />
                 </div>
                 <div className="p-5 text-center flex flex-col items-center">
                   <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
@@ -173,17 +176,18 @@ function GlobalImpact() {
                     {item.badgeLinkText} <ExternalLink className="h-3 w-3" />
                   </a>
                 )}
-                {item.badgeUrls && item.badgeUrls.map((b, i) => (
-                  <a
-                    key={i}
-                    href={b.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 rounded bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary transition-colors hover:bg-primary/20"
-                  >
-                    {b.label} <ExternalLink className="h-3 w-3" />
-                  </a>
-                ))}
+                {item.badgeUrls &&
+                  item.badgeUrls.map((b, i) => (
+                    <a
+                      key={i}
+                      href={b.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded bg-primary/10 px-3 py-1.5 text-[11px] font-semibold text-primary transition-colors hover:bg-primary/20"
+                    >
+                      {b.label} <ExternalLink className="h-3 w-3" />
+                    </a>
+                  ))}
               </div>
             </div>
           );
@@ -213,10 +217,7 @@ function FooterSection() {
             className="rounded border border-border bg-background p-2 text-foreground hover:bg-accent"
             aria-label="LinkedIn"
           >
-            <svg
-              className="h-4 w-4 fill-current"
-              viewBox="0 0 24 24"
-            >
+            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
               <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
             </svg>
           </a>
@@ -227,10 +228,7 @@ function FooterSection() {
             className="rounded border border-border bg-background p-2 text-foreground hover:bg-accent"
             aria-label="Instagram"
           >
-            <svg
-              className="h-4 w-4 fill-current"
-              viewBox="0 0 24 24"
-            >
+            <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
             </svg>
           </a>
@@ -238,9 +236,7 @@ function FooterSection() {
 
         {/* Newsletter Box */}
         <div className="space-y-2">
-          <p className="text-xs font-bold uppercase tracking-wider text-foreground">
-            NEWSLETTER
-          </p>
+          <p className="text-xs font-bold uppercase tracking-wider text-foreground">NEWSLETTER</p>
           <div className="flex">
             <input
               type="email"

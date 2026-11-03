@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, Section } from "@/components/site-shell";
 import { Star } from "lucide-react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
 
 const ITEMS = [
   {
@@ -29,9 +25,15 @@ export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
       { title: "Testimonials — Prince Agrawal" },
-      { name: "description", content: "Real stories from buyers, sellers, and refinance clients across Central Texas." },
+      {
+        name: "description",
+        content: "Real stories from buyers, sellers, and refinance clients across Central Texas.",
+      },
       { property: "og:title", content: "Testimonials — Prince Agrawal" },
-      { property: "og:description", content: "Real stories from buyers, sellers, and refinance clients." },
+      {
+        property: "og:description",
+        content: "Real stories from buyers, sellers, and refinance clients.",
+      },
     ],
   }),
   component: Page,
@@ -40,7 +42,9 @@ export const Route = createFileRoute("/testimonials")({
 function Stars() {
   return (
     <div className="flex gap-1 text-foreground">
-      {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className="h-4 w-4 fill-current" />
+      ))}
     </div>
   );
 }
@@ -65,12 +69,16 @@ function Page() {
         <div className="text-center max-w-2xl mx-auto">
           <p className="eyebrow">Client stories</p>
           <h1 className="display-1 mt-4">Word of mouth pays my mortgage.</h1>
-          <p className="mt-5 text-muted-foreground">A few clients who took time to write something kind.</p>
+          <p className="mt-5 text-muted-foreground">
+            A few clients who took time to write something kind.
+          </p>
         </div>
 
         {/* Desktop: 3-col masonry-ish */}
         <div className="mt-16 hidden md:grid gap-6 md:grid-cols-3">
-          {ITEMS.map((t) => <Card key={t.name} t={t} />)}
+          {ITEMS.map((t) => (
+            <Card key={t.name} t={t} />
+          ))}
         </div>
 
         {/* Mobile: swipe carousel */}

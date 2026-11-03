@@ -5,16 +5,25 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Prince Agrawal" },
-      { name: "description", content: "Engineer, entrepreneur, and social-impact advocate dedicated to creating innovative solutions that empower communities." },
+      {
+        name: "description",
+        content:
+          "Engineer, entrepreneur, and social-impact advocate dedicated to creating innovative solutions that empower communities.",
+      },
       { property: "og:title", content: "About — Prince Agrawal" },
-      { property: "og:description", content: "Engineer, entrepreneur, and social-impact advocate." },
+      {
+        property: "og:description",
+        content: "Engineer, entrepreneur, and social-impact advocate.",
+      },
     ],
   }),
   component: Page,
 });
 
-const HERO = "https://static.wixstatic.com/media/11062b_77378fc0da68439ebd8fd24a2f51e50cf000.jpg/v1/fill/w_1905,h_435,al_c,q_85/11062b_77378fc0da68439ebd8fd24a2f51e50cf000.jpg";
-const PORTRAIT = "https://static.wixstatic.com/media/4bba53_db78d09177824b3aaf6d631edacd027d~mv2.png/v1/fill/w_428,h_691,al_c,lg_1,q_85/4bba53_db78d09177824b3aaf6d631edacd027d~mv2.png";
+const HERO =
+  "https://static.wixstatic.com/media/11062b_77378fc0da68439ebd8fd24a2f51e50cf000.jpg/v1/fill/w_1905,h_435,al_c,q_85/11062b_77378fc0da68439ebd8fd24a2f51e50cf000.jpg";
+const PORTRAIT =
+  "https://static.wixstatic.com/media/4bba53_db78d09177824b3aaf6d631edacd027d~mv2.png/v1/fill/w_428,h_691,al_c,lg_1,q_85/4bba53_db78d09177824b3aaf6d631edacd027d~mv2.png";
 
 const MOMENTS = [
   {
@@ -66,16 +75,18 @@ function Page() {
             <p className="eyebrow">About Me.</p>
             <h1 className="display-1 mt-4">Hi — I'm Prince.</h1>
             <p className="mt-6 text-base md:text-lg text-muted-foreground leading-relaxed">
-              Engineer, entrepreneur, and social-impact advocate dedicated to creating
-              innovative solutions that empower communities and help people achieve their
-              goals.
+              Engineer, entrepreneur, and social-impact advocate dedicated to creating innovative
+              solutions that empower communities and help people achieve their goals.
             </p>
             <p className="mt-4 text-base md:text-lg text-muted-foreground leading-relaxed">
-              When I'm not in the office, you'll find me on a long trail run, working on a
-              community housing initiative, or quietly rewriting a contract until every
-              clause makes sense to a first-time buyer.
+              When I'm not in the office, you'll find me on a long trail run, working on a community
+              housing initiative, or quietly rewriting a contract until every clause makes sense to
+              a first-time buyer.
             </p>
-            <Link to="/contact" className="mt-8 inline-flex h-11 items-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+            <Link
+              to="/contact"
+              className="mt-8 inline-flex h-11 items-center rounded-md bg-primary px-6 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+            >
               Get in touch
             </Link>
           </div>
@@ -94,13 +105,23 @@ function Page() {
             <article key={m.title} className="grid gap-8 md:grid-cols-2 md:items-center">
               <div className={i % 2 === 1 ? "md:order-2" : ""}>
                 <div className="aspect-[4/3] overflow-hidden rounded-md border border-border bg-background">
-                  <img src={m.img} alt={m.title} className="photo-mono h-full w-full object-cover" loading="lazy" />
+                  <img
+                    src={m.img}
+                    alt={m.title}
+                    className="photo-mono h-full w-full object-cover"
+                    loading="lazy"
+                  />
                 </div>
               </div>
               <div className={i % 2 === 1 ? "md:order-1" : ""}>
                 <h3 className="display-2 text-2xl md:text-3xl">{m.title}</h3>
                 <p className="mt-4 text-muted-foreground leading-relaxed">{m.body}</p>
-                <a href={m.link} target="_blank" rel="noreferrer" className="mt-5 inline-flex text-sm underline underline-offset-4 text-foreground hover:text-foreground/70">
+                <a
+                  href={m.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-5 inline-flex text-sm underline underline-offset-4 text-foreground hover:text-foreground/70"
+                >
                   Read More →
                 </a>
               </div>

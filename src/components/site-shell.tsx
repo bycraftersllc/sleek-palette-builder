@@ -60,7 +60,7 @@ export function SiteHeader() {
                   "py-1 transition-colors hover:text-primary relative",
                   isActive
                     ? "text-primary font-extrabold after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-primary"
-                    : "text-foreground/80"
+                    : "text-foreground/80",
                 )}
               >
                 {n.label}
@@ -82,7 +82,7 @@ export function SiteHeader() {
                   to={n.to}
                   className={cn(
                     "py-3 border-b border-border/60 last:border-b-0",
-                    isActive ? "text-primary font-extrabold" : "text-foreground/80"
+                    isActive ? "text-primary font-extrabold" : "text-foreground/80",
                   )}
                 >
                   {n.label}

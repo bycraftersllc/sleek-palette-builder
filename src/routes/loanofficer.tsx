@@ -60,7 +60,11 @@ export const Route = createFileRoute("/loanofficer")({
   head: () => ({
     meta: [
       { title: "Loan Officer & Mortgage — Prince Agrawal" },
-      { name: "description", content: "Loan Officer and Mortgage services, financing options, and financial education tools." },
+      {
+        name: "description",
+        content:
+          "Loan Officer and Mortgage services, financing options, and financial education tools.",
+      },
     ],
   }),
   component: Page,
@@ -115,7 +119,9 @@ function Page() {
             </div>
             <div className="w-full">
               <p className="font-bold uppercase tracking-wide text-xs text-foreground">
-                Digital Business Card<br />(Dotcard)
+                Digital Business Card
+                <br />
+                (Dotcard)
               </p>
               <button
                 onClick={handleSaveContact}
@@ -132,7 +138,9 @@ function Page() {
                 <span className="text-2xl">📄</span>
               </div>
               <p className="font-bold uppercase tracking-wide text-xs text-foreground">
-                Attached Documents<br />(PDFs)
+                Attached Documents
+                <br />
+                (PDFs)
               </p>
             </div>
             <button className="mt-3 w-full rounded-md border border-border bg-background px-4 py-2 text-xs font-semibold text-foreground shadow-sm transition-colors hover:bg-muted">
@@ -162,7 +170,8 @@ function Page() {
             Mortgage Options Explained
           </h2>
           <p className="text-center text-xs text-muted-foreground mb-6">
-            Want to explore loan options and refinance? Find the loan type that best fits your profile.
+            Want to explore loan options and refinance? Find the loan type that best fits your
+            profile.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {MORTGAGE_OPTIONS.map((opt) => (
@@ -195,10 +204,18 @@ function Page() {
             <div className="border border-border bg-card p-4 rounded-md text-center flex flex-col justify-between shadow-sm">
               <div>
                 <p className="font-bold text-xs uppercase mb-1 text-foreground">Market Tracker</p>
-                <p className="text-[11px] text-muted-foreground mb-3">US 10-Year Treasury Yield (CNBC)</p>
+                <p className="text-[11px] text-muted-foreground mb-3">
+                  US 10-Year Treasury Yield (CNBC)
+                </p>
                 <div className="h-20 w-full border border-border rounded flex items-end p-2 bg-background mb-3">
                   <svg className="w-full h-full" viewBox="0 0 100 40">
-                    <path d="M0,35 Q20,25 40,30 T80,10 T100,20" fill="none" stroke="currentColor" strokeWidth="2" className="text-slate-900" />
+                    <path
+                      d="M0,35 Q20,25 40,30 T80,10 T100,20"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      className="text-slate-900"
+                    />
                   </svg>
                 </div>
               </div>
@@ -218,7 +235,8 @@ function Page() {
                 <p className="font-bold text-xs uppercase mb-1 text-foreground">DTI Guide</p>
                 <p className="text-[11px] text-muted-foreground mb-2">Debt-to-Income Calculation</p>
                 <div className="p-2.5 bg-muted/40 rounded text-[11px] text-muted-foreground text-left leading-relaxed">
-                  DTI = Total monthly debt payments ÷ Gross monthly income. Measures how much of your income goes toward paying debts. Our lender processes DTI up to 50%.
+                  DTI = Total monthly debt payments ÷ Gross monthly income. Measures how much of
+                  your income goes toward paying debts. Our lender processes DTI up to 50%.
                 </div>
               </div>
               <a
@@ -234,10 +252,16 @@ function Page() {
             {/* Tool 3: Amortization Guide & Calculator */}
             <div className="border border-border bg-card p-4 rounded-md text-center flex flex-col justify-between shadow-sm">
               <div>
-                <p className="font-bold text-xs uppercase mb-1 text-foreground">Amortization Guide</p>
-                <p className="text-[11px] text-muted-foreground mb-2">Schedule & Equity Breakdown</p>
+                <p className="font-bold text-xs uppercase mb-1 text-foreground">
+                  Amortization Guide
+                </p>
+                <p className="text-[11px] text-muted-foreground mb-2">
+                  Schedule & Equity Breakdown
+                </p>
                 <div className="p-2.5 bg-muted/40 rounded text-[11px] text-muted-foreground text-left leading-relaxed">
-                  Amortization gradually pays off a loan through scheduled payments covering principal & interest. Early payments go mostly toward interest while building property equity.
+                  Amortization gradually pays off a loan through scheduled payments covering
+                  principal & interest. Early payments go mostly toward interest while building
+                  property equity.
                 </div>
               </div>
               <a
@@ -263,7 +287,9 @@ function Page() {
                   Loan / Refinance Application
                 </h3>
                 <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
-                  Apply today using the link below to start your home loan or refinance. Fast approval, competitive rates, and expert guidance all in one place. Your journey to homeownership starts today.
+                  Apply today using the link below to start your home loan or refinance. Fast
+                  approval, competitive rates, and expert guidance all in one place. Your journey to
+                  homeownership starts today.
                 </p>
               </div>
               <a
@@ -279,9 +305,7 @@ function Page() {
             {/* Card 2: Credit Run */}
             <div className="flex flex-col justify-between rounded-lg border border-border bg-card p-6 text-center shadow-sm">
               <div>
-                <h3 className="font-extrabold text-sm uppercase text-foreground">
-                  Credit Run
-                </h3>
+                <h3 className="font-extrabold text-sm uppercase text-foreground">Credit Run</h3>
                 <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
                   Click here to run your credit and move one step closer to approval.
                 </p>
@@ -300,16 +324,19 @@ function Page() {
 
         {/* Testimonials */}
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-xl font-bold uppercase text-center mb-8 text-foreground">Testimonials</h2>
+          <h2 className="text-xl font-bold uppercase text-center mb-8 text-foreground">
+            Testimonials
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((item, idx) => (
-              <div key={idx} className="border border-border rounded-lg bg-card p-4 shadow-sm text-center">
+              <div
+                key={idx}
+                className="border border-border rounded-lg bg-card p-4 shadow-sm text-center"
+              >
                 <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-muted">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  "{item.text}"
-                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">"{item.text}"</p>
               </div>
             ))}
           </div>

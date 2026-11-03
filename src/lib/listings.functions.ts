@@ -23,13 +23,16 @@ export type Listing = {
 
 async function sb() {
   const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-  return supabaseAdmin as any;
+  return supabaseAdmin;
 }
 
 export const listAllListings = createServerFn({ method: "GET" }).handler(async () => {
   try {
     const db = await sb();
-    const { data, error } = await db.from("listings").select("*").order("created_at", { ascending: false });
+    const { data, error } = await db
+      .from("listings")
+      .select("*")
+      .order("created_at", { ascending: false });
     if (error) return [] as Listing[];
     return (data ?? []) as Listing[];
   } catch {
@@ -57,7 +60,11 @@ export const getListing = createServerFn({ method: "GET" })
   .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
   .handler(async ({ data }) => {
     const db = await sb();
-    const { data: row, error } = await db.from("listings").select("*").eq("id", data.id).maybeSingle();
+    const { data: row, error } = await db
+      .from("listings")
+      .select("*")
+      .eq("id", data.id)
+      .maybeSingle();
     if (error) throw new Error(error.message);
     return (row ?? null) as Listing | null;
   });
@@ -82,7 +89,12 @@ const upsertSchema = z.object({
 
 async function assertAdmin(userId: string) {
   const db = await sb();
-  const { data } = await db.from("user_roles").select("role").eq("user_id", userId).eq("role", "admin").maybeSingle();
+  const { data } = await db
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", userId)
+    .eq("role", "admin")
+    .maybeSingle();
   if (!data) throw new Error("Forbidden");
   return db;
 }
