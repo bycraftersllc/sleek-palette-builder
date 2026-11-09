@@ -1,0 +1,1 @@
+import{j as o}from"./index-CsbifVk7.js";import{S as t,a as n}from"./site-shell-2H3pSHIz.js";const i=()=>o.jsx(t,{children:o.jsx(n,{children:o.jsx("p",{children:"Not found."})})});export{i as notFoundComponent};
