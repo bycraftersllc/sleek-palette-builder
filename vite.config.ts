@@ -3,12 +3,8 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  nitro: { preset: "vercel" },
-  tanstackStart: {
-    server: {
-      entry: "server",
-    },
-  },
+  // We removed the nitro (Vercel) and server entry blocks. 
+  // This forces it to build as a standard static site!
   vite: {
     plugins: [
       tailwindcss(),
