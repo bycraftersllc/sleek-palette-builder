@@ -1,1 +1,0 @@
-import{j as o}from"./index-CsbifVk7.js";import{S as e,a as s}from"./site-shell-2H3pSHIz.js";const i=({error:r})=>o.jsx(e,{children:o.jsx(s,{children:o.jsx("p",{children:r.message})})});export{i as errorComponent};

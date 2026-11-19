@@ -1,1 +1,0 @@
-import{j as o}from"./index-CsbifVk7.js";import{S as n,a as t}from"./site-shell-2H3pSHIz.js";const e=()=>o.jsx(n,{children:o.jsx(t,{children:o.jsx("p",{children:"Listing not found."})})});export{e as notFoundComponent};
