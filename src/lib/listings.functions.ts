@@ -56,19 +56,19 @@ export const listFeaturedListings = createServerFn({ method: "GET" }).handler(as
   }
 });
 
-export const getListing = createServerFn({ method: "GET" })
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
-  .handler(async ({ data }) => {
+export const getListing = createServerFn({ method: "GET" }).handler(
+  async ({ data }: { data: unknown }) => {
+    const parsed = z.object({ id: z.string().uuid() }).parse(data);
     const db = await sb();
     const { data: row, error } = await db
       .from("listings")
       .select("*")
-      .eq("id", data.id)
+      .eq("id", parsed.id)
       .maybeSingle();
     if (error) throw new Error(error.message);
     return (row ?? null) as Listing | null;
-  });
-
+  },
+);
 const upsertSchema = z.object({
   id: z.string().uuid().optional(),
   title: z.string().min(1).max(200),
@@ -101,16 +101,16 @@ async function assertAdmin(userId: string) {
 
 export const upsertListing = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => upsertSchema.parse(d))
-  .handler(async ({ data, context }) => {
+  .handler(async ({ data, context }: { data: unknown; context: { userId: string } }) => {
+    const parsed = upsertSchema.parse(data);
     const db = await assertAdmin(context.userId);
-    if (data.id) {
-      const { id, ...rest } = data;
+    if (parsed.id) {
+      const { id, ...rest } = parsed;
       const { error } = await db.from("listings").update(rest).eq("id", id);
       if (error) throw new Error(error.message);
       return { ok: true, id };
     }
-    const { id: _ignore, ...rest } = data;
+    const { id: _ignore, ...rest } = parsed;
     const { data: row, error } = await db.from("listings").insert(rest).select("id").single();
     if (error) throw new Error(error.message);
     return { ok: true, id: row.id as string };
@@ -118,10 +118,10 @@ export const upsertListing = createServerFn({ method: "POST" })
 
 export const deleteListing = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
-  .inputValidator((d) => z.object({ id: z.string().uuid() }).parse(d))
-  .handler(async ({ data, context }) => {
+  .handler(async ({ data, context }: { data: unknown; context: { userId: string } }) => {
+    const parsed = z.object({ id: z.string().uuid() }).parse(data);
     const db = await assertAdmin(context.userId);
-    const { error } = await db.from("listings").delete().eq("id", data.id);
+    const { error } = await db.from("listings").delete().eq("id", parsed.id);
     if (error) throw new Error(error.message);
     return { ok: true };
   });
