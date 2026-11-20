@@ -112,9 +112,14 @@ function Page() {
               <h2 className="text-md font-bold uppercase tracking-wider mb-4 text-foreground">
                 From The Builder
               </h2>
-              <div className="w-16 h-16 border-2 border-slate-900 flex items-center justify-center mx-auto mb-3 text-slate-900 font-black text-xl">
+              <a
+                href="https://www.bycrafters.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-16 h-16 flex items-center justify-center mx-auto mb-3 text-slate-900 font-black text-xl"
+              >
                 ByCrafters
-              </div>
+              </a>
               <p className="text-xs text-muted-foreground font-medium">ByCrafters crafts fast, responsive websites, custom apps, and AI-powered digital solutions tailored for small businesses from idea to launch.</p>
             </div>
 
