@@ -3,7 +3,13 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  nitro: { preset: "vercel" },
+  nitro: { 
+    preset: "vercel",
+    // @ts-ignore: Lovable's type definitions are missing this property, but Nitro requires it
+    vercel: {
+      entryFormat: "node"
+    }
+  },
   tanstackStart: {
     server: {
       entry: "server",
