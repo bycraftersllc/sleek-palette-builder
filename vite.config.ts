@@ -5,7 +5,6 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   nitro: { preset: "vercel" },
   tanstackStart: {
-    ssr: false, // <-- This is the magic line. It disables server rendering and forces a static SPA.
     server: {
       entry: "server",
     },
