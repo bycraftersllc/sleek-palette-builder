@@ -3,14 +3,9 @@ import tsConfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  nitro: { 
-    preset: "vercel",
-    // @ts-ignore: Lovable's type definitions are missing this property, but Nitro requires it
-    vercel: {
-      entryFormat: "node"
-    }
-  },
+  nitro: { preset: "vercel" },
   tanstackStart: {
+    ssr: false, // <-- This is the magic line. It disables server rendering and forces a static SPA.
     server: {
       entry: "server",
     },
