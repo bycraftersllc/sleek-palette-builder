@@ -113,9 +113,9 @@ function Page() {
                 From The Builder
               </h2>
               <div className="w-16 h-16 rounded-full border-2 border-slate-900 flex items-center justify-center mx-auto mb-3 text-slate-900 font-black text-xl">
-                MB
+                ByCrafters
               </div>
-              <p className="text-xs text-muted-foreground font-medium">Builder info</p>
+              <p className="text-xs text-muted-foreground font-medium">ByCrafters crafts fast, responsive websites, custom apps, and AI-powered digital solutions tailored for small businesses from idea to launch.</p>
             </div>
 
             {/* Articles Block */}
